@@ -1,0 +1,29 @@
+---
+import { SITE } from '@/config';
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{SITE.title}</title>
+    <meta name="title" content={SITE.title} />
+    <meta name="generator" content={Astro.generator} />
+    {SITE.description && <meta name="description" content={SITE.description} />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={SITE.title} />
+    {SITE.description && <meta property="og:description" content={SITE.description} />}
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={SITE.title} />
+    {SITE.description && <meta property="twitter:description" content={SITE.description} />}
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

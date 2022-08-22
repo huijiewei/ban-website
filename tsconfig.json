@@ -24,13 +24,18 @@
     // Language and Environment
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "target": "ESNext",
-    "jsx": "react-jsx",
+
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
 
     // Completeness
     "skipLibCheck": true,
 
-    "types": ["vite/client"],
+    "types": ["vite/client", "@astrojs/image/client"],
 
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }

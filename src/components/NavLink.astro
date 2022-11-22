@@ -1,0 +1,16 @@
+---
+const currentPath = new URL(Astro.request.url).pathname;
+const { path, name } = Astro.props;
+---
+
+<a
+  class:list={[
+    'inline-block rounded py-1 px-3',
+    currentPath == path
+      ? 'text-slate-900 bg-slate-100 hover:bg-slate-200 hover:text-slate-800'
+      : 'hover:bg-slate-100 hover:text-slate-900',
+  ]}
+  href={path}
+>
+  {name}</a
+>

@@ -1,0 +1,39 @@
+.article {
+  > * + * {
+    @apply mt-4;
+  }
+  h2 {
+    @apply mt-12 text-xl font-bold sm:text-2xl;
+  }
+  h3 {
+    @apply mt-6 text-base font-bold sm:text-lg;
+  }
+  a {
+    @apply text-cyan-700 underline-offset-2 hover:underline;
+  }
+  :not(pre) code {
+    @apply rounded-sm bg-gray-100 p-2 italic;
+  }
+  blockquote {
+    @apply border-l-4 border-cyan-700 bg-sky-100 p-4 italic;
+  }
+  h2,
+  h3 {
+    @apply flex items-center;
+    &:hover a {
+      @apply opacity-100;
+    }
+    a {
+      @apply -ml-5 hidden pr-1 leading-4 opacity-0 transition-all hover:bg-transparent sm:block;
+    }
+  }
+  .heading-link img {
+    @apply m-0 h-4 w-4;
+  }
+  .external-link-icon {
+    @apply relative top-[2px] inline-flex;
+    img {
+      @apply m-0 ml-[2px] h-4 w-4;
+    }
+  }
+}

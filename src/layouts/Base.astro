@@ -1,5 +1,9 @@
 ---
 import { SITE } from '@/config';
+
+import NavLink from '../components/NavLink.astro';
+
+import '../styles/base.css';
 ---
 
 <!DOCTYPE html>
@@ -24,7 +28,7 @@ import { SITE } from '@/config';
     {SITE.description && <meta property="twitter:description" content={SITE.description} />}
   </head>
   <body>
-    <header class="py-10">
+    <header class="py-5">
       <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <nav class="relative z-50 flex justify-between">
           <div class="flex items-center md:gap-x-12">
@@ -50,24 +54,16 @@ import { SITE } from '@/config';
               </svg>
             </a>
             <div class="hidden md:flex md:gap-x-6">
-              <a class="inline-block rounded-lg py-1 px-2 text-sm hover:bg-slate-100 hover:text-slate-900" href="/">
-                主页
-              </a>
-              <a class="inline-block rounded-lg py-1 px-2 text-sm hover:bg-slate-100 hover:text-slate-900" href="/blog">
-                博客</a
-              >
-              <a
-                class="inline-block rounded-lg py-1 px-2 text-sm hover:bg-slate-100 hover:text-slate-900"
-                href="/about"
-              >
-                关于</a
-              >
+              <NavLink path="/" name="主页" />
+              <NavLink path="/blog" name="博客" />
+              <NavLink path="/tips" name="技巧" />
+              <NavLink path="/about" name="关于" />
             </div>
           </div>
         </nav>
       </div>
     </header>
-    <main class="mx-auto max-w-7xl">
+    <main class="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-5">
       <slot />
     </main>
   </body>

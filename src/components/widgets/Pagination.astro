@@ -1,0 +1,26 @@
+---
+const { prevUrl, nextUrl, prevText = '上一页', nextText = '下一页' } = Astro.props;
+---
+
+{
+  (prevUrl || nextUrl) && (
+    <div class="container flex">
+      <div class="flex flex-row mx-auto container justify-between">
+        <a
+          href={prevUrl}
+          class={`btn btn-ghost px-3 mr-2
+      ${!prevUrl ? 'invisible' : ''}`}
+        >
+          <div class="flex flex-row align-middle">
+            <p class="ml-2">{prevText}</p>
+          </div>
+        </a>
+        <a href={nextUrl} class={`btn btn-ghost px-3 ${!nextUrl ? 'invisible' : ''}`}>
+          <div class="flex flex-row align-middle">
+            <span class="mr-2">{nextText}</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  )
+}

@@ -1,7 +1,8 @@
 module.exports = {
-  content: ['./src/**/*.{astro,html,md,mdx,js,ts,jsx,tsx}'],
+  content: ['./src/**/*.{astro,html,md,mdx,js,jsx,ts,tsx}'],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
+  darkMode: 'class',
 };

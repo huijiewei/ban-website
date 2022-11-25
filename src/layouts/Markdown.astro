@@ -1,7 +1,18 @@
 ---
-import BaseLayout from './Base.astro';
+import Layout from './PageLayout.astro';
+
+import { SITE } from '~/config.mjs';
+
+const { frontmatter } = Astro.props;
+
+const meta = {
+  title: frontmatter.title + ' - ' + SITE.title,
+  description: frontmatter.title,
+};
 ---
 
-<BaseLayout>
-  <article class="article"><slot /></article>
-</BaseLayout>
+<Layout {meta}>
+  <article class="article px-6 sm:px-6 py-10 mx-auto max-w-6xl">
+    <slot />
+  </article>
+</Layout>

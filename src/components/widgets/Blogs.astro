@@ -1,0 +1,34 @@
+---
+import PostTags from '~/components/widgets/Tags.astro';
+
+const { posts } = Astro.props;
+---
+
+<ul>
+  {
+    posts.map((post) => (
+      <li class="mb-10 md:mb-16">
+        <article class={'max-w-md mx-auto md:max-w-none grid gap-6 md:gap-8'}>
+          <div>
+            <header>
+              <h2 class="text-xl sm:text-2xl font-bold leading-snug mb-2 font-heading">
+                <a
+                  class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+                  href={'/posts/' + post.slug}
+                >
+                  {post.title}
+                </a>
+              </h2>
+            </header>
+            <p class="text-md sm:text-lg flex-grow">{post.excerpt || post.description}</p>
+            <footer class="mt-4">
+              <div class="mt-4">
+                <PostTags tags={'/tags/' + post.tags} />
+              </div>
+            </footer>
+          </div>
+        </article>
+      </li>
+    ))
+  }
+</ul>

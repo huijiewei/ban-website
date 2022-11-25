@@ -1,0 +1,30 @@
+---
+import { SITE } from '~/config.mjs';
+import Layout from '~/layouts/BlogLayout.astro';
+import BlogList from '~/components/widgets/Blogs.astro';
+import Pagination from '~/components/widgets/Pagination.astro';
+import { fetchPosts } from '~/utils/posts';
+
+export async function getStaticPaths({ paginate }) {
+  const posts = await fetchPosts();
+
+  return paginate(posts, {
+    params: { blog: 'blog' },
+    pageSize: 5,
+  });
+}
+
+const { page } = Astro.props;
+const currentPage = page.currentPage ?? 1;
+const meta = {
+  title: `博客 ${currentPage > 1 ? `— 分页 ${currentPage} ` : ''}— ${SITE.title}`,
+  description: SITE.description,
+  ogType: 'blog',
+  noindex: currentPage > 1,
+};
+---
+
+<Layout {meta}>
+  <BlogList posts={page.data} />
+  <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+</Layout>

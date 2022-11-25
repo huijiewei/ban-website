@@ -1,5 +1,14 @@
 ---
-import Base from '@/layouts/Base.astro';
+import { SITE } from '~/config.mjs';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+
+const meta = {
+  title: SITE.title,
+  description: SITE.description,
+};
 ---
 
-<Base>Home</Base>
+<Layout {meta}>
+  <Hero />
+</Layout>

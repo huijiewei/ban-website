@@ -1,16 +1,25 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import solidjs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
-import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { SITE } from './src/config.mjs';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  site: 'https://ban.huijiewei.com',
+  site: SITE.origin,
+  base: SITE.basePathname,
+  trailingSlash: SITE.trailingSlash ? 'always' : 'never',
   integrations: [
-    tailwind(),
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
     mdx({
       rehypePlugins: [
         [
@@ -50,8 +59,6 @@ export default defineConfig({
       ],
       extendPlugins: 'astroDefaults',
     }),
-    solidjs(),
-    image(),
     sitemap(),
   ],
   markdown: {
@@ -59,6 +66,13 @@ export default defineConfig({
     shikiConfig: {
       theme: 'github-dark',
       wrap: true,
+    },
+  },
+  vite: {
+    resolve: {
+      alias: {
+        '~': path.resolve(__dirname, './src'),
+      },
     },
   },
 });

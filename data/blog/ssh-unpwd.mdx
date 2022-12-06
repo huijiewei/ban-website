@@ -1,0 +1,15 @@
+---
+title: SSH 免密码登录
+---
+
+```shell
+ssh-keygen -t rsa
+cd ~/.ssh
+cat id_rsa.pub >> authorized_keys
+```
+
+把 `id_rsa` 文件保存到本地，可以用 `cat id_rsa` 复制粘贴
+
+本地的 key 文件需要设置权限 `chmod 600 文件名`
+
+还是非常简单的

@@ -16,3 +16,9 @@ git config --global http.https://github.com.proxy socks5h://127.0.0.1:1080
 ```bash
 git config --global credential.helper osxkeychain
 ```
+
+### 修复 EFI 分区错误
+
+```bash
+sudo fsck_msdos /dev/disk0s1
+```

@@ -1,0 +1,10 @@
+{
+  "name": "一个 Astro 站点",
+  "short_name": "run-site",
+  "icons": [
+    { "src": "/icons/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icons/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "start_url": "/",
+  "display": "standalone"
+}

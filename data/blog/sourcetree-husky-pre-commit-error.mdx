@@ -1,0 +1,17 @@
+---
+title: 尝试从 SourceTree 提交时出现 Husky 预提交错误
+---
+
+从 SourceTree 提交到在 Husky 中设置了预提交的项目时, 会遇到下面的错误, 主要是因为 GUI 界面无法加载 CLI 的环境变量
+
+```
+.husky/pre-commit: Line 4 npm: command not found
+```
+
+可以新建一个 `~/.huskyrc` 文件, 然后
+
+```
+echo 'export PATH="/opt/homebrew/bin/:$PATH"' >> ~/.huskyrc
+```
+
+把 Apple Silicon 的 brew 下的 bin 目录加载给 husky 就好了

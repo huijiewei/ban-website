@@ -1,0 +1,17 @@
+---
+title: 注意 ssl_reject_handshake 设置会干扰 TLSv1.3 开启
+---
+
+最近在做 SSR 框架优化, 发现服务器响应速度比预想的要慢很多, 忽然发现 HTTPS 的 TLSv1.3 竟然没开启.
+
+我明明都配置好了的, 另外一台服务器的配置却很正常.
+
+正在我百思不得其解的时候, 搜索到 [v2ex 也有朋友遇到同样的问题](https://www.v2ex.com/t/847906)
+
+原来我当时也配置过 `ssl_reject_handshake` 这个选项.
+
+在这个选项下面把 TLS 的配置加上其实就好了
+
+```
+ssl_protocols TLSv1.2 TLSv1.3;
+```

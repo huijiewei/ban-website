@@ -1,7 +1,7 @@
 ---
 import { SITE } from '~/config.mjs';
-import Layout from '~/layouts/BlogLayout.astro';
-import BlogList from '~/components/widgets/Blogs.astro';
+import Layout from '~/layouts/NoteLayout.astro';
+import NoteList from '../../components/widgets/Notes.astro';
 import Pagination from '~/components/widgets/Pagination.astro';
 import { fetchPosts } from '~/utils/posts';
 
@@ -9,7 +9,7 @@ export async function getStaticPaths({ paginate }) {
   const posts = await fetchPosts();
 
   return paginate(posts, {
-    params: { blog: 'blog' },
+    params: { notes: 'notes' },
     pageSize: 5,
   });
 }
@@ -17,14 +17,14 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 const currentPage = page.currentPage ?? 1;
 const meta = {
-  title: `博客 ${currentPage > 1 ? `— 分页 ${currentPage} ` : ''}— ${SITE.title}`,
+  title: `记录 ${currentPage > 1 ? `— 分页 ${currentPage} ` : ''}— ${SITE.title}`,
   description: SITE.description,
-  ogType: 'blog',
+  ogType: 'notes',
   noindex: currentPage > 1,
 };
 ---
 
 <Layout {meta}>
-  <BlogList posts={page.data} />
+  <NoteList posts={page.data} />
   <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
 </Layout>

@@ -1,0 +1,25 @@
+---
+title: macOS 上的 nano 高亮显示
+---
+
+首先安装 nanorc 高亮配置文件
+
+```shell
+brew install nanorc
+```
+
+然后编辑 .nanorc 文件
+
+```shell
+nano .nanorc
+```
+
+最后加载自己需要的高亮配置
+
+```
+set tabsize 4
+set linenumbers
+include "/opt/homebrew/share/nanorc/zsh.nanorc"
+include "/opt/homebrew/share/nanorc/nginx.nanorc"
+include "/opt/homebrew/share/nanorc/nanorc.nanorc"
+```

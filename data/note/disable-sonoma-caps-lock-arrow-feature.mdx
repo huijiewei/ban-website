@@ -1,0 +1,16 @@
+---
+title: 禁用 Sonoma 上新大写锁定箭头功能
+---
+
+创建目录 `sudo mkdir -p /Library/Preferences/FeatureFlags/Domain`
+
+创建禁用 ShittyNewArrowFeature
+`sudo /usr/libexec/PlistBuddy -c "Add 'redesigned_text_cursor:Enabled' bool false" /Library/Preferences/FeatureFlags/Domain/UIKit.plist` 的 .plist 文件
+
+reboot 重启
+
+合并为单个命令：
+```shell
+sudo mkdir -p /Library/Preferences/FeatureFlags/Domain && sudo /usr/libexec/PlistBuddy -c "Add 'redesigned_text_cursor:Enabled' bool false" /Library/Preferences/FeatureFlags/Domain/UIKit.plist && sudo shutdown -r now
+```
+（注意：将立即重新启动）

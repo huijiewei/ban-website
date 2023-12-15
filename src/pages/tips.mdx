@@ -47,3 +47,8 @@ proxy = socks5://127.0.0.1:1080
 ```
 export HOMEBREW_CURLRC="~/.curlrc"
 ```
+
+### macOS 解除应用的隔离属性
+```
+sudo xattr -rd com.apple.quarantine 应用路径
+```

@@ -52,3 +52,18 @@ export HOMEBREW_CURLRC="~/.curlrc"
 ```
 sudo xattr -rd com.apple.quarantine 应用路径
 ```
+
+### git 强制提交子树
+
+如果使用 `git subtree push` 命令加上 `-f` 参数来强制提交子树的话, 会提示错误 `unknown option f`
+
+我们可以使用 git 命令链来解决这个问题, 命令如下
+
+```
+git push <remote> `git subtree split --prefix <local-folder> <local-branch>`:<remote-branch> --force
+```
+
+- `<remote>` 子树的远程仓库
+- `<local-folder>` 子树相对于存储库根目录的本地文件夹路径
+- `<local-branch>` 本地存储库的分支
+- `<remote-branch>` 子树远程仓库的分支
